@@ -21,14 +21,11 @@ newWordBtn.addEventListener("click", () => {
 })
 
 socket.on("new word", (data) => {
-  console.log(data);
   wordContainer.classList.remove("hidden")
   if (!data) {
-    console.log("imposter");
     word.classList.add("hidden")
     imposter.classList.remove("hidden")
   } else {
-    console.log("crewmate");
     imposter.classList.add("hidden")
     word.classList.remove("hidden")
     word.textContent = data

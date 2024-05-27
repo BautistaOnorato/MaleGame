@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "amongus";
-  src: url('http://localhost:5500/client/fonts/VCR_OSD_MONO_1.001.ttf');
+  src: url('../fonts/VCR_OSD_MONO_1.001.ttf');
 }
 
 *, *::after, *::before {

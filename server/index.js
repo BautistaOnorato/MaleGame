@@ -3,6 +3,7 @@ import express from "express"
 import { createServer } from "node:http"
 import { Server } from "socket.io"
 import { WORDS } from "./constants.js"
+import path from "node:path"
 
 dotenv.config()
 
@@ -12,6 +13,8 @@ const app = express()
 const server = createServer(app)
 const io = new Server(server)
 
+app.use("/static", express.static(path.join(process.cwd(), "public")))
+
 app.get("/", (req, res) => {
   res.sendFile(process.cwd() + "/view/index.html")
 })
@@ -20,7 +23,6 @@ app.get("/room/:id", (req, res) => {
   res.sendFile(process.cwd() + "/view/room.html")
 })
 
-app.use(express.static("client"))
 
 io.on("connection", (socket) => {
   const socketCode = socket.handshake.query.code
